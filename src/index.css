@@ -1,0 +1,649 @@
+@import "bootstrap/dist/css/bootstrap.min.css";
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+@font-face {
+  font-family: "StarJedi";
+  src: url("./assets/fonts/Starjedi.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background-color: #1a1a1a;
+}
+
+p {
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.1rem;
+}
+
+.swars-font-style {
+  font-family: "StarJedi", sans-serif;
+  letter-spacing: 0.1rem;
+}
+
+img {
+  cursor: pointer;
+}
+
+
+/* ================================ 
+          N A V B A R    
+=================================== */
+
+.nav-item-custom {
+  font-family: "StarJedi", sans-serif;
+  letter-spacing: 1.5px;
+  color: #d1d1d1;
+  text-decoration: none;
+  font-size: 1.07rem;
+  padding: 0.5rem 1rem;
+  transition: color 0.3s ease;
+}
+
+.nav-item-custom:hover {
+  color: #9a9a9a;
+  text-decoration: none;
+}
+
+.nav-item-custom.active {
+  color: #f5f5f5;
+}
+
+/*======== HAMBUGER MENU ========*/
+.navbar-toggler {
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28255, 255, 255, 0.9%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+
+/* ================================ 
+      H E R O  C A R O U S E L   
+=================================== */
+
+
+.hero-carousel-wrapper {
+  position: relative;
+  height: 170px;
+  width: 100%;
+}
+
+.hero-carousel-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.6);
+}
+
+.hero-carousel-caption {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: rgb(229, 229, 229);
+  text-align: center;
+}
+
+.hero-title {
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: rgb(229, 229, 229);
+}
+
+.hero-description {
+  font-size: 0.7rem;
+}
+
+/* ========== READ MORE BUTTON  ========== */
+
+.hero-carousel-caption a {
+  color: #fff;
+  text-decoration: none;
+  display: inline-block;
+  padding: 0.3rem 0.7rem;
+  font-size: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid #fff;
+  letter-spacing: 1px;
+  backdrop-filter: blur(4px);
+}
+
+
+/* ================================ 
+     C A R O U S E L  V I E W 
+=================================== */
+
+.carousel-wrapper {
+  max-width: 100%;
+  background-color: #1a1a1a;
+}
+
+.carousel-container {
+  padding-bottom: 1.5rem;
+}
+
+.carousel-item {
+  display: flex;
+  justify-content: flex-start;
+  padding: 0.5rem;
+  flex-shrink: 0;
+}
+
+.carousel-card {
+  width: 100px;
+  padding: 0 4px;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.carousel-card p {
+  display: none;
+}
+
+.carousel-card img {
+  margin-top: 0.2rem;
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  border-radius: 12px;
+  background-color: #fff;
+  object-position: top;
+  transition: box-shadow 0.2s ease;
+}
+
+.carousel-card img:hover {
+  box-shadow: 0 0 1px 2px #d1d1d1;
+}
+
+.custom-dot-list-style {
+  bottom: -10px;
+  display: flex;
+  justify-content: center;
+}
+
+.custom-dot-list-style li button {
+  width: 12px;
+  height: 6px;
+  border-radius: 4px;
+  background: #a5a5a5;
+  border: none;
+  margin: 0 4px;
+  transition: background 0.3s ease;
+}
+
+.custom-dot-list-style li.react-multi-carousel-dot--active button {
+  background: #fff;
+}
+
+/* ================================ 
+    LOADING CAROUSEL SPINNER
+=================================== */
+
+.loading-carousel-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading-carousel-spinner {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-top: 6px solid #40c4ff;
+  border-right: 6px solid #00b0ff;
+  animation: spinner 0.8s linear infinite;
+  box-shadow: 0 0 20px #40c4ff, 0 0 10px #00b0ff inset;
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+
+  50% {
+    transform: rotate(180deg) scale(1.1);
+  }
+
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+/* ================================ 
+  SECTION CAROUSEL TITLE | EXPLORE
+=================================== */
+
+.section-carousel-category-title {
+  color: #e5e5e5;
+  font-size: 1rem;
+}
+
+.section-carousel-explore-all {
+  text-decoration: none;
+  color: rgb(229, 229, 229);
+  transition: color 0.3s ease;
+}
+
+.section-carousel-explore-all:hover {
+  color: #a5a5a5;
+}
+
+.section-carousel-explore-all h5 {
+  font-size: 0.8rem;
+}
+
+
+/* ================================ 
+   P E O P L E  C O M P O N E N T
+=================================== */
+
+.card-img-dimension {
+  width: 100%;
+  height: 440px;
+  object-fit: cover;
+  object-position: top;
+  /* object-fit: contain; */
+}
+
+
+/* ================================ 
+  P A G I N A T I O N  B U T T O N
+=================================== */
+
+.pagination-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-family: "StarJedi", sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.1rem;
+  background-color: rgb(247, 205, 0);
+  color: #1a1a1a;
+  padding: 10px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  width: 7rem;
+  border: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.pagination-btn:not(:disabled):hover {
+  border: 2px solid #fff;
+  box-shadow: 0 0 10px rgb(247, 205, 0);
+  background-color: rgb(247, 205, 0);
+}
+
+.pagination-btn:disabled {
+  cursor: default;
+  opacity: 0.5;
+  border: 2px solid transparent;
+}
+
+.pagination-status {
+  font-family: "StarJedi", sans-serif;
+  font-size: 1.1rem;
+  color: rgb(247, 205, 0);
+}
+
+
+/* ================================ 
+      S E A R C H  F O R M
+=================================== */
+
+.search-btn {
+  font-family: "StarJedi", sans-serif;
+  letter-spacing: 0.1rem;
+  background-color: rgb(247, 205, 0);
+  color: #1a1a1a;
+  border-radius: 8px;
+  padding: 0.5rem 1.25rem;
+  border: none;
+}
+
+.form-input {
+  background-color: #545454;
+  padding: 0.5rem 1rem;
+}
+
+.form-input::placeholder {
+  /* letter-spacing: 0.2rem; */
+  color: white;
+  opacity: 0.5;
+}
+
+.form-input:focus {
+  background-color: #2a2a2a;
+  color: white;
+}
+
+.form-input:focus::placeholder {
+  color: transparent;
+}
+
+
+/* ================================ 
+        C A R D  I N F O 
+=================================== */
+
+.card-info-body {
+  padding: 1rem 0;
+  background-color: #2a2a2a;
+  border-radius: 0 0 6px 6px;
+  border-top: 1px solid #fff;
+  font-weight: bold;
+  letter-spacing: 0.05rem;
+}
+
+.card-info-body:hover {
+  background-color: #1a1a1a;
+}
+
+.card-title-link {
+  text-decoration: none;
+}
+
+.card-title-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0;
+  color: #fff;
+  font-size: 1.2rem;
+
+}
+
+
+/* ================================ 
+    P A G E  N O T  F O U N D
+=================================== */
+
+.page-not-found-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  background-color: #1a1a1a;
+  padding: 2rem;
+  color: rgb(247, 205, 0);
+  font-family: 'Orbitron', sans-serif;
+  animation: stars-bg 20s linear infinite;
+}
+
+.page-not-found-wrapper h1 {
+  font-size: 8rem;
+  margin: 0;
+  text-shadow: 0 0 20px rgb(247, 205, 0), 0 0 40px rgb(247, 205, 0);
+}
+
+.page-not-found-wrapper h2 {
+  margin: 1rem 0;
+  font-size: 2rem;
+  color: #f5f5f5;
+}
+
+.page-not-found-wrapper p {
+  max-width: 470px;
+  font-size: 1.3rem;
+  color: #fff;
+
+}
+
+
+/* ================================ 
+    L O A D I N G  S P I N N E R 
+=================================== */
+
+.spinner-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.loading-spinner {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 6px solid transparent;
+  border-top: 6px solid #40c4ff;
+  border-right: 6px solid #00b0ff;
+  animation: spin 0.8s linear infinite;
+  box-shadow: 0 0 20px #40c4ff, 0 0 10px #00b0ff inset;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+
+  50% {
+    transform: rotate(180deg) scale(1.1);
+  }
+
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+/* ================================ 
+    E R R O R   M E S S A G E
+=================================== */
+
+.error {
+  color: #e5e5e5;
+  font-size: 0.6rem;
+}
+
+/* ================================ 
+        M E D I A  Q U E R I ES  
+=================================== */
+
+@media (min-width: 420px) {
+
+  /* ========== SECTION CAROUSEL CATEGORY TITLE | EXPLORE ALL ========== */
+  .section-carousel-category-title {
+    font-size: 1.2rem;
+  }
+
+  .section-carousel-explore-all h5 {
+    font-size: 1rem;
+  }
+
+  /* ========== HOME REACT-CAROUSEL ========== */
+  .carousel-card {
+    width: 125px;
+  }
+
+  .carousel-card p {
+    display: block;
+    color: #e5e5e5;
+    margin-top: 1rem;
+    font-size: 0.8rem;
+  }
+
+  /* ========== HERO CAROUSEL ========== */
+
+  .hero-carousel-wrapper {
+    height: 210px;
+  }
+
+  .hero-title {
+    font-size: 1.6rem;
+    font-weight: 600;
+  }
+
+  .hero-description {
+    font-size: 1rem;
+  }
+
+  .hero-carousel-caption a {
+    padding: 0.5rem 0.9rem;
+    font-size: 0.7rem;
+  }
+
+  /* ========== ERROR MESSAGE ========== */
+
+  .error {
+    font-size: 0.8rem;
+  }
+}
+
+
+@media (min-width: 768px) {
+
+  /* ========== HOME REACT-CAROUSEL ========== */
+  .carousel-card {
+    width: 160px;
+  }
+
+  .carousel-card p {
+    font-size: 1rem;
+  }
+
+  .section-carousel-category-title {
+    color: #e5e5e5;
+    font-size: 1rem;
+  }
+
+  /* ========== SECTION CAROUSEL CATEGORY TITLE | EXPLORE ALL ========== */
+  .section-carousel-category-title {
+    font-size: 1.4rem;
+  }
+
+  .section-carousel-explore-all h5 {
+    font-size: 1.2rem;
+  }
+
+  /* ========== HERO CAROUSEL ========== */
+
+  .hero-carousel-wrapper {
+    height: 280px;
+  }
+
+  .hero-title {
+    font-size: 2.1rem;
+    font-weight: 700;
+  }
+
+  .hero-description {
+    font-size: 1.3rem;
+  }
+
+  .hero-carousel-caption a {
+    padding: 0.7rem 1.1rem;
+    font-size: 0.9rem;
+    transition: backdrop-filter 0.3s ease, background-color 0.3s ease;
+  }
+
+  .hero-carousel-caption a:hover {
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.300);
+  }
+
+
+  /* ========== PAGINATION ========== */
+
+  .pagination-btn {
+    font-size: 1.1rem;
+    padding: 15px 30px;
+    width: 10rem;
+  }
+
+  .pagination-status {
+    font-size: 1.7rem;
+  }
+
+  /* ========== ERROR MESSAGE ========== */
+
+  .error {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+
+  /* ========== HOME REACT-CAROUSEL ========== */
+  .carousel-card {
+    width: 170px;
+  }
+
+  /* ========== SECTION CAROUSEL CATEGORY TITLE | EXPLORE ALL ========== */
+  .section-carousel-category-title {
+    font-size: 1.8rem;
+  }
+
+  .section-carousel-explore-all h5 {
+    font-size: 1.2rem;
+  }
+
+  /* ========== HERO CAROUSEL ========== */
+
+  .hero-carousel-wrapper {
+    height: 350px;
+  }
+
+  .hero-title {
+    font-size: 3rem;
+  }
+
+  .hero-description {
+    font-size: 1.7rem;
+  }
+
+  /* ========== ERROR MESSAGE ========== */
+
+  .error {
+    font-size: 1.2rem;
+  }
+}
+
+@media (min-width: 1400px) {
+
+  /* ========== HOME REACT-CAROUSEL ========== */
+  .carousel-card {
+    width: 200px;
+  }
+
+  /* ========== HERO CAROUSEL ========== */
+
+  .hero-carousel-wrapper {
+    height: 470px;
+  }
+
+  .hero-title {
+    font-size: 5rem;
+  }
+
+  .hero-description {
+    font-size: 2 .7rem;
+  }
+
+}
