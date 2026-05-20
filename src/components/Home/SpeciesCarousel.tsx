@@ -57,10 +57,11 @@ const SpeciesCarousel = () => {
                 <CarouselView>
                     {species.map((specie) => (
                         <div className="carousel-card" key={specie.id}>
-                            <Link to={`/species/${specie.id}`}>
-                                <img src={speciesImages[specie.id]} alt={specie.name} title={specie.name} />
+                            <Link to={`/species/${specie.id}`} className="poster-container">
+                                <img src={speciesImages[specie.id]} className="poster-glow" aria-hidden="true" alt="" />
+                                <img src={speciesImages[specie.id]} className="poster-main" alt={specie.name} title={specie.name} />
                             </Link>
-                            <p style={{ color: "#e5e5e5", marginTop: "1rem" }}>{specie.name}</p>
+                            <p>{specie.name}</p>
                         </div>
                     ))}
                 </CarouselView>

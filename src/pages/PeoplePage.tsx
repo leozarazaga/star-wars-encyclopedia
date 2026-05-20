@@ -49,8 +49,8 @@ const PeoplePage = () => {
         return <LoadingSpinner />;
     }
 
-     if (error) {
-        return <ErrorMessage message={error}/>
+    if (error) {
+        return <ErrorMessage message={error} />;
     }
 
     if (!peoples) {
@@ -62,7 +62,11 @@ const PeoplePage = () => {
             <SearchForm onSearch={handleSearch} searchCategory={"characters..."} />
 
             {search !== "" &&
-                (peoples.data.length === 0 ? <p className="fs-5 text-light">No results found for "{search}"</p> : <p className="fs-5 text-light">Search results for "{search}"</p>)}
+                (peoples.data.length === 0 ? (
+                    <p className="fs-5 text-light">No results found for "{search}"</p>
+                ) : (
+                    <p className="fs-5 text-light">Search results for "{search}"</p>
+                ))}
 
             {peoples.data.length > 0 && (
                 <div className="mt-4">
@@ -72,9 +76,9 @@ const PeoplePage = () => {
                 </div>
             )}
 
-            <Row>
+            <Row className="g-3">
                 {peoples.data.map((people) => (
-                    <Col key={people.id} xs={12} md={6} lg={3} className="mb-5">
+                    <Col key={people.id} xs={6} md={6} lg={3} className="mb-4">
                         <CardInfo title={people.name} image={people.image_url} link={`/people/${people.id}`} />
                     </Col>
                 ))}

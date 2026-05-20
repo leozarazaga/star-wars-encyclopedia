@@ -7,11 +7,9 @@ interface SectionCarouselTitleProps {
 
 const SectionCarouselTitle: React.FC<SectionCarouselTitleProps> = ({ title, linkTo }) => {
     return (
-        <section className="d-flex justify-content-between align-items-center px-3">
+        <section className="d-flex justify-content-between align-items-center px-auto">
             <Link to={linkTo} style={{ textDecoration: "none" }}>
-                <h1 className="section-carousel-category-title">
-                    {title}
-                </h1>
+                <h1 className="section-carousel-category-title">{title}</h1>
             </Link>
 
             <Link to={linkTo} className="section-carousel-explore-all">

@@ -78,9 +78,9 @@ const VehiclesPage = () => {
                         </h1>
                     </div>
 
-                    <Row>
+                    <Row className="g-3">
                         {vehicles.data.map((vehicle) => (
-                            <Col key={vehicle.id} xs={12} md={6} lg={3} className="mb-5">
+                            <Col key={vehicle.id} xs={6} md={6} lg={3} className="mb-4">
                                 <CardInfo title={vehicle.name} image={vehicleImages[vehicle.id]} link={`/vehicles/${vehicle.id}`} />
                             </Col>
                         ))}

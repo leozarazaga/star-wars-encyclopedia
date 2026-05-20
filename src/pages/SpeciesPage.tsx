@@ -51,8 +51,8 @@ const SpeciesPage = () => {
         return <LoadingSpinner />;
     }
 
-     if (error) {
-        return <ErrorMessage message={error}/>
+    if (error) {
+        return <ErrorMessage message={error} />;
     }
 
     if (!species) {
@@ -64,7 +64,11 @@ const SpeciesPage = () => {
             <SearchForm onSearch={handleSearch} searchCategory={"species..."} />
 
             {search !== "" &&
-                (species.data.length === 0 ? <p className="fs-5 text-light">No results found for "{search}"</p> : <p className="fs-5 text-light">Search results for "{search}"</p>)}
+                (species.data.length === 0 ? (
+                    <p className="fs-5 text-light">No results found for "{search}"</p>
+                ) : (
+                    <p className="fs-5 text-light">Search results for "{search}"</p>
+                ))}
 
             {species.data.length > 0 && (
                 <>
@@ -74,9 +78,9 @@ const SpeciesPage = () => {
                         </h1>
                     </div>
 
-                    <Row>
+                    <Row className="g-3">
                         {species.data.map((species) => (
-                            <Col key={species.id} xs={12} md={6} lg={3} className="mb-5">
+                            <Col key={species.id} xs={6} md={6} lg={3} className="mb-4">
                                 <CardInfo title={species.name} image={speciesImages[species.id]} link={`/species/${species.id}`} />
                             </Col>
                         ))}

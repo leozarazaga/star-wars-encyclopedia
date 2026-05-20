@@ -48,11 +48,11 @@ const StarshipsPage = () => {
     };
 
     if (isLoading) {
-        return <LoadingSpinner/>
+        return <LoadingSpinner />;
     }
 
-      if (error) {
-        return <ErrorMessage message={error}/>
+    if (error) {
+        return <ErrorMessage message={error} />;
     }
 
     if (!starships) {
@@ -78,9 +78,9 @@ const StarshipsPage = () => {
                         </h1>
                     </div>
 
-                    <Row>
+                    <Row className="g-3">
                         {starships.data.map((starship) => (
-                            <Col key={starship.id} xs={12} md={6} lg={3} className="mb-5">
+                            <Col key={starship.id} xs={6} md={6} lg={3} className="mb-4">
                                 <CardInfo title={starship.name} image={StarshipImages[starship.id]} link={`/starships/${starship.id}`} />
                             </Col>
                         ))}

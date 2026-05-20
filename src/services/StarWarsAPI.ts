@@ -25,7 +25,6 @@ import type {
     VehiclePaginationResult,
 } from "../types/StarWarsAPI.types";
 
-const FAKE_DELAY = 50;
 const instance = axios.create({
     baseURL: "https://swapi.thehiveresistance.com/api",
     timeout: 5000,
@@ -37,16 +36,11 @@ const instance = axios.create({
 
 const get = async <T>(endpoint: string) => {
     const res = await instance.get<T>(endpoint);
-
-    if (FAKE_DELAY) {
-        await new Promise((r) => setTimeout(r, FAKE_DELAY));
-    }
-
     return res.data;
 };
 
 export const getFilms = async (search: string, page = 1) => {
-    return await get<FilmPaginationResult>(`/films/?search=${search}&page=${page}`);
+    return await get<FilmPaginationResult>(`/films?search=${search}&page=${page}`);
 };
 
 export const getFilmById = async (id: number) => {

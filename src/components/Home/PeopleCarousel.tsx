@@ -59,9 +59,10 @@ const PeopleCarousel = () => {
                         {peoples.map((people) => (
                             <div className="carousel-card" key={people.id}>
                                 <Link to={`/people/${people.id}`}>
-                                    <img src={people.image_url} alt={people.name} title={people.name} />
+                                    <img src={people.image_url} className="poster-glow" aria-hidden="true" alt="" />
+                                    <img src={people.image_url} className="poster-main" alt={people.name} title={people.name} />
                                 </Link>
-                                <p style={{ color: "#e5e5e5", marginTop: "1rem" }}>{people.name}</p>
+                                <p >{people.name}</p>
                             </div>
                         ))}
                     </CarouselView>

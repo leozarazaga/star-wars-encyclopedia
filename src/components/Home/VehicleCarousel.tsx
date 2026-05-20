@@ -46,10 +46,11 @@ const VehicleCarousel = () => {
                 <CarouselView>
                     {vehicles.map((vehicle) => (
                         <div className="carousel-card" key={vehicle.id}>
-                            <Link to={`/vehicles/${vehicle.id}`}>
-                                <img src={vehicleImages[vehicle.id]} alt={vehicle.name} title={vehicle.name} />
+                            <Link to={`/vehicles/${vehicle.id}`} className="poster-container">
+                                <img src={vehicleImages[vehicle.id]} className="poster-glow" aria-hidden="true" alt="" />
+                                <img src={vehicleImages[vehicle.id]} className="poster-main" alt={vehicle.name} title={vehicle.name} />
                             </Link>
-                            <p style={{ color: "#e5e5e5", marginTop: "1rem" }}>{vehicle.name}</p>
+                            <p>{vehicle.name}</p>
                         </div>
                     ))}
                 </CarouselView>

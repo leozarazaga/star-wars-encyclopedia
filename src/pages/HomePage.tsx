@@ -21,4 +21,3 @@ const HomePage = () => {
 };
 
 export default HomePage;
-<h1>This is the Home Page / Start Page</h1>;

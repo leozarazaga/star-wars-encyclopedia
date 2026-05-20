@@ -46,10 +46,11 @@ const StarshipsCarousel = () => {
                 <CarouselView>
                     {starships.map((starship) => (
                         <div className="carousel-card" key={starship.id}>
-                            <Link to={`/starships/${starship.id}`}>
-                                <img src={StarshipImages[starship.id]} alt={starship.name} title={starship.name} />
+                            <Link to={`/starships/${starship.id}`} className="poster-container">
+                                <img src={StarshipImages[starship.id]} className="poster-glow" aria-hidden="true" alt="" />
+                                <img src={StarshipImages[starship.id]} className="poster-main" alt={starship.name} title={starship.name} />
                             </Link>
-                            <p style={{ color: "#e5e5e5", marginTop: "1rem" }}>{starship.name}</p>
+                            <p>{starship.name}</p>
                         </div>
                     ))}
                 </CarouselView>

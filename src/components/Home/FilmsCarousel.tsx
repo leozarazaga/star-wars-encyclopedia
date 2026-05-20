@@ -1,13 +1,12 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import { Container } from "react-bootstrap";
+import { Link } from "react-router";
 import { getFilms } from "../../services/StarWarsAPI";
 import type { Film } from "../../types/StarWarsAPI.types";
-import { Container } from "react-bootstrap";
-
-import CarouselView from "./CarouselView";
-import { Link } from "react-router";
-import SectionTitle from "./SectionCarouselTitle";
-import LoadingCarouselSpinner from "./LoadingCarouselSpinner";
 import ErrorMessage from "../ErrorMessage";
+import CarouselView from "./CarouselView";
+import LoadingCarouselSpinner from "./LoadingCarouselSpinner";
+import SectionTitle from "./SectionCarouselTitle";
 
 const FilmsCarousel = () => {
     const [error, setError] = useState<string | false>(false);
@@ -46,8 +45,9 @@ const FilmsCarousel = () => {
                 <CarouselView>
                     {movies.map((movie) => (
                         <div className="carousel-card" key={movie.id}>
-                            <Link to={`/films/${movie.id}`}>
-                                <img src={movie.image_url} alt={movie.title} title={movie.title} />
+                            <Link to={`/films/${movie.id}`} className="poster-container">
+                                <img src={movie.image_url} className="poster-glow" aria-hidden="true" alt="" />
+                                <img src={movie.image_url} className="poster-main" alt={movie.title} title={movie.title} />
                             </Link>
                             <p>{movie.title}</p>
                         </div>

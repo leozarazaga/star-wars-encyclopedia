@@ -45,7 +45,7 @@ const FilmsPage = () => {
         setSearchParams({ search, page: "1" });
     };
 
-    if (isLoading) {
+    if (!movies || isLoading) {
         return <LoadingSpinner />;
     }
 
@@ -62,7 +62,11 @@ const FilmsPage = () => {
             <SearchForm onSearch={handleSearch} searchCategory={"films..."} />
 
             {search !== "" &&
-                (movies.data.length === 0 ? <p className="fs-5 text-light">No results found for "{search}"</p> : <p className="fs-5 text-light">Search results for "{search}"</p>)}
+                (movies.data.length === 0 ? (
+                    <p className="fs-5 text-light">No results found for "{search}"</p>
+                ) : (
+                    <p className="fs-5 text-light">Search results for "{search}"</p>
+                ))}
 
             {movies.data.length > 0 && (
                 <div className="mt-4">
@@ -72,9 +76,9 @@ const FilmsPage = () => {
                 </div>
             )}
 
-            <Row>
+            <Row className="g-3">
                 {movies.data.map((movie) => (
-                    <Col key={movie.id} xs={12} md={6} lg={3} className="mb-5">
+                    <Col key={movie.id} xs={6} md={6} lg={3} className="mb-4">
                         <CardInfo title={movie.title} image={movie.image_url} link={`/films/${movie.id}`} />
                     </Col>
                 ))}

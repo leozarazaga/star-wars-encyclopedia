@@ -33,8 +33,8 @@ const PlanetsCarousel = () => {
         getStarWarsPlanets();
     }, []);
 
-     if (error) {
-        return <ErrorMessage message={error}/>
+    if (error) {
+        return <ErrorMessage message={error} />;
     }
 
     return (
@@ -46,10 +46,11 @@ const PlanetsCarousel = () => {
                 <CarouselView>
                     {planets.map((planet) => (
                         <div className="carousel-card" key={planet.id}>
-                            <Link to={`/planets/${planet.id}`}>
-                                <img src={planetsImages[planet.id]} alt={planet.name} title={planet.name} />
+                            <Link to={`/planets/${planet.id}`} className="poster-container">
+                                <img src={planetsImages[planet.id]} className="poster-glow" aria-hidden="true" alt="" />
+                                <img src={planetsImages[planet.id]} className="poster-main" alt={planet.name} title={planet.name} />
                             </Link>
-                            <p style={{ color: "#e5e5e5", marginTop: "1rem" }}>{planet.name}</p>
+                            <p>{planet.name}</p>
                         </div>
                     ))}
                 </CarouselView>

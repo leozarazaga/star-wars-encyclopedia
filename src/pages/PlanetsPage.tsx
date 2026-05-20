@@ -48,11 +48,11 @@ const PlanetsPage = () => {
     };
 
     if (isLoading) {
-        return <LoadingSpinner/>
+        return <LoadingSpinner />;
     }
 
     if (error) {
-        return <ErrorMessage message={error}/>
+        return <ErrorMessage message={error} />;
     }
 
     if (!planets) {
@@ -64,7 +64,11 @@ const PlanetsPage = () => {
             <SearchForm onSearch={handleSearch} searchCategory={"planets..."} />
 
             {search !== "" &&
-                (planets.data.length === 0 ? <p className="fs-5 text-light">No results found for "{search}"</p> : <p className="fs-5 text-light">Search results for "{search}"</p>)}
+                (planets.data.length === 0 ? (
+                    <p className="fs-5 text-light">No results found for "{search}"</p>
+                ) : (
+                    <p className="fs-5 text-light">Search results for "{search}"</p>
+                ))}
 
             {planets.data.length > 0 && (
                 <>
@@ -74,9 +78,9 @@ const PlanetsPage = () => {
                         </h1>
                     </div>
 
-                    <Row>
+                    <Row className="g-3">
                         {planets.data.map((planet) => (
-                            <Col key={planet.id} xs={12} md={6} lg={3} className="mb-5">
+                            <Col key={planet.id} xs={6} md={6} lg={3} className="mb-4">
                                 <CardInfo title={planet.name} image={planetsImages[planet.id]} link={`/planets/${planet.id}`} />
                             </Col>
                         ))}

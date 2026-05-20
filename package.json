@@ -17,9 +17,9 @@
     "react": "^19.1.0",
     "react-bootstrap": "^2.10.10",
     "react-dom": "^19.1.0",
-    "react-multi-carousel": "^2.8.6",
     "react-router": "^7.6.0",
-    "react-router-bootstrap": "^0.26.3"
+    "react-router-bootstrap": "^0.26.3",
+    "swiper": "^12.1.4"
   },
   "devDependencies": {
     "@eslint/js": "^9.25.0",

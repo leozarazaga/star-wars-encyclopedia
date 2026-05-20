@@ -1,29 +1,10 @@
-import type React from "react";
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
+import React from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Keyboard } from "swiper/modules";
 
-const responsive = {
-    superLargeDesktop: {
-        breakpoint: { max: 4000, min: 1400 },
-        items: 6,
-    },
-    desktop: {
-        breakpoint: { max: 1400, min: 1024 },
-        items: 5,
-    },
-    tablet: {
-        breakpoint: { max: 1024, min: 768 },
-        items: 4,
-    },
-    mobileLarge: {
-        breakpoint: { max: 768, min: 420 },
-        items: 3,
-    },
-    mobileSmall: {
-        breakpoint: { max: 420, min: 0 },
-        items: 3,
-    },
-};
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 type CarouselViewProps = {
     children: React.ReactNode;
@@ -32,19 +13,32 @@ type CarouselViewProps = {
 const CarouselView: React.FC<CarouselViewProps> = ({ children }) => {
     return (
         <div className="carousel-wrapper">
-            <Carousel
-                swipeable={true}
-                responsive={responsive}
-                showDots={true}
-                infinite={false}
-                containerClass="carousel-container"
-                dotListClass="custom-dot-list-style"
-                itemClass="carousel-item"
-                slidesToSlide={4}
-                removeArrowOnDeviceType={["tablet", "mobileLarge", "mobileSmall"]}
+            <Swiper
+                modules={[Navigation, Pagination, Keyboard]}
+                spaceBetween={20} 
+                slidesPerView={2}
+                slidesPerGroup={1}
+                speed={800}
+                navigation={true}
+                pagination={{ clickable: true}}
+                keyboard={{ enabled: true }}
+                loop={false}
+                grabCursor={true}
+                breakpoints={{
+                    420: { slidesPerView: 3 },
+                    768: { slidesPerView: 4, slidesPerGroup: 2 },
+                    1024: { slidesPerView: 5, slidesPerGroup: 3 },
+                    1200: { slidesPerView: 6, slidesPerGroup: 3 },
+                    1400: { slidesPerView: 6, slidesPerGroup: 4 },
+                }}
+                className="main-swiper-container"
             >
-                {children}
-            </Carousel>
+                {React.Children.map(children, (child, index) => (
+                    <SwiperSlide key={index} className="custom-swiper-slide">
+                        {child}
+                    </SwiperSlide>
+                ))}
+            </Swiper>
         </div>
     );
 };
