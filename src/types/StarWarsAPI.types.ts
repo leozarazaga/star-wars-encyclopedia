@@ -36,6 +36,7 @@ export interface Film {
     image_url: string;
     created: string;
     edited: string;
+    short_description: string;
     characters: Character[];
     planets: Planet[];
     starships: Starship[];
