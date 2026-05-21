@@ -76,6 +76,9 @@ export interface People {
     species_count: number;
     starships_count: number;
     vehicles_count: number;
+    short_description: string;
+    force_alignment: string;
+    lightsaber_color: string;
     films: Film[];
     species: Specie[];
     starships: Starship[];
@@ -123,6 +126,7 @@ export interface Planet {
     residents_count: number;
     films_count: number;
     image_url: string;
+    short_description: string;
     residents: Residents[];
     films: Films[];
 }
@@ -156,6 +160,7 @@ export interface Specie {
     language: string;
     people_count: number;
     films_count: number;
+    short_description: string;
     people: People[];
     homeworld: Homeworld;
     films: Films[];
@@ -199,6 +204,7 @@ export interface Starship {
     consumables: string;
     pilots_count: number;
     films_count: number;
+    short_description: string;
     pilots: Pilot[];
     films: Films[];
 }
@@ -234,6 +240,7 @@ export interface Vehicle {
     consumables: string;
     pilots_count: number;
     films_count: number;
+    short_description: string;
     pilots: Pilot[];
     films: Films[];
 }

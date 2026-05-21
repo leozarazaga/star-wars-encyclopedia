@@ -11,7 +11,7 @@ const StarshipsDetailsPage = () => {
     const [error, setError] = useState<string | false>(false);
     const [isLoading, setIsLoading] = useState(false);
     const [starship, setStarship] = useState<Starship | null>(null);
-    const nagivate = useNavigate();
+    const navigate = useNavigate();
 
     const { id } = useParams();
     const starshipId = Number(id);
@@ -35,7 +35,6 @@ const StarshipsDetailsPage = () => {
         getStarWarsStarships(starshipId);
     }, [starshipId]);
 
-
     // Update document title
     useEffect(() => {
         if (!starship) return;
@@ -47,7 +46,6 @@ const StarshipsDetailsPage = () => {
         };
     }, [starship]);
 
-    
     if (error) {
         return <ErrorMessage message={error} />;
     }
@@ -56,79 +54,147 @@ const StarshipsDetailsPage = () => {
         return <LoadingSpinner />;
     }
 
+    const isKnownValue = (value: string | undefined | null) => {
+        if (!value) return false;
+        return value !== "n/a" && value !== "none" && value !== "unknown";
+    };
+
+    const hasKnownSpecs =
+        isKnownValue(starship.length) ||
+        isKnownValue(starship.crew) ||
+        isKnownValue(starship.max_atmosphering_speed) ||
+        isKnownValue(starship.hyperdrive_rating);
+
     return (
-        <Container className="mt-4">
-            <Card className="bg-dark text-light ">
-                <Row>
-                    <Col md={4}>
-                        <Card.Img
-                            src={StarshipImages[starship.id]}
-                            alt={starship.name}
-                            style={{
-                                objectFit: "cover",
-                                height: "100%",
-                                width: "100%",
-                                cursor: "default",
-                            }}
-                        />
-                    </Col>
+        <>
+            {/* ========== TOP SECTION ========== */}
+            <div className="movie-details-backdrop-container">
+                <img src={StarshipImages[starship.id]} alt={`${starship.name} Backdrop`} className="movie-details-backdrop-image" />
 
-                    <Col md={6}>
-                        <Card.Body>
-                            <Card.Title className="fs-3">{starship.name}</Card.Title>
-                            <p className="mt-3 mb-2">Model: {starship.model}</p>
-                            <p className="mb-2">Class: {starship.starship_class}</p>
-                            <p className="mb-2">Manufacturer: {starship.manufacturer}</p>
-                            <p className="mb-2">Cost in Credits: {starship.cost_in_credits}</p>
-                            <p className="mb-2">Length: {starship.length}</p>
-                            <p className="mb-2">Crew: {starship.crew}</p>
-                            <p className="mb-2">Passengers: {starship.passengers}</p>
-                            <p className="mb-2">Max Speed (Atmosphering): {starship.max_atmosphering_speed}</p>
-                            <p className="mb-2">Hyperdrive Rating: {starship.hyperdrive_rating}</p>
-                            <p className="mb-2">MGLT: {starship.MGLT}</p>
-                            <p className="mb-2">Cargo Capacity: {starship.cargo_capacity}</p>
-                            <p className="mb-2">Consumables: {starship.consumables}</p>
-                        </Card.Body>
-                    </Col>
-                </Row>
-            </Card>
+                <section className="movie-backdrop-overlay py-5">
+                    <Container>
+                        <Row className="align-items-center justify-content-center">
+                            {/* LEFT COLUMN */}
+                            <Col xs={12} md={4} lg={3} xl={3} className="mb-4 mb-md-0 d-flex justify-content-center justify-content-md-end">
+                                <Card className="movie-card-details-page shadow-sm" style={{ maxWidth: "320px", background: "transparent" }}>
+                                    <Card.Img
+                                        src={StarshipImages[starship.id]}
+                                        alt={starship.name}
+                                        style={{ aspectRatio: "2 / 3", objectFit: "cover" }}
+                                    />
+                                </Card>
+                            </Col>
 
-            <Card className="bg-dark text-light mt-4 p-3">
-                {starship.pilots.length > 0 && (
-                    <>
-                        <h4 className="text-light">Pilots</h4>
-                        <div className="mb-3">
-                            {starship.pilots.map((pilot) => (
-                                <Link to={`/people/${pilot.id}`} key={pilot.id} className="text-white text-decoration-none">
-                                    <span className="badge bg-secondary me-2 mb-2" style={{ fontSize: "0.8rem" }}>
-                                        {pilot.name}
+                            {/* RIGHT COLUMN */}
+                            <Col xs={12} md={8} lg={9} xl={8} className="text-light px-md-4 px-lg-5">
+                                <h2 className="fw-bold mb-1 text-white">{starship.name}</h2>
+
+                                <div className="text-light mb-4 d-flex flex-wrap align-items-center gap-2" style={{ fontSize: "0.95rem" }}>
+                                    <span className="border border-secondary text-secondary px-2 rounded-1 text-uppercase">
+                                        {starship.starship_class}
                                     </span>
-                                </Link>
-                            ))}
-                        </div>
-                    </>
-                )}
+                                    {isKnownValue(starship.model) && (
+                                        <>
+                                            <span>•</span>
+                                            <span className="text-secondary text-capitalize">{starship.model}</span>
+                                        </>
+                                    )}
+                                </div>
 
-                {starship.films.length > 0 && (
-                    <>
-                        <h4 className="text-light">Films</h4>
-                        <div className="mb-3">
-                            {starship.films.map((film) => (
-                                <Link to={`/films/${film.id}`} key={film.id} className="text-white text-decoration-none">
-                                    <span key={film.id} className="badge bg-secondary me-2 mb-2" style={{ fontSize: "0.8rem" }}>
-                                        {film.title}
-                                    </span>
-                                </Link>
-                            ))}
-                        </div>
-                    </>
-                )}
-            </Card>
+                                <h5 className="text-light fw-bold mt-4">Overview</h5>
+                                <p className="text-light lh-lg mb-3" style={{ fontSize: "1.05rem" }}>
+                                    {starship.short_description || "No description available for this starship."}
+                                </p>
 
-            <button className="pagination-btn my-4" onClick={() => nagivate(-1)}>
-                Back
-            </button>
-        </Container>
+                                {isKnownValue(starship.manufacturer) && (
+                                    <p className="text-secondary mb-4" style={{ fontSize: "0.85rem", lineHeight: "1.6" }}>
+                                        <span className="fw-bold text-light">Manufacturer:</span> {starship.manufacturer}
+                                    </p>
+                                )}
+
+                                {hasKnownSpecs && (
+                                    <Row className="mt-4 pt-3 border-top border-secondary gy-3">
+                                        {isKnownValue(starship.length) && (
+                                            <Col xs={6} md={3}>
+                                                <p className="mb-0 fw-bold text-light">{starship.length}</p>
+                                                <small className="text-secondary">Length (m)</small>
+                                            </Col>
+                                        )}
+
+                                        {isKnownValue(starship.crew) && (
+                                            <Col xs={6} md={3}>
+                                                <p className="mb-0 fw-bold text-light">{starship.crew}</p>
+                                                <small className="text-secondary">Crew</small>
+                                            </Col>
+                                        )}
+
+                                        {isKnownValue(starship.passengers) && (
+                                            <Col xs={6} md={3}>
+                                                <p className="mb-0 fw-bold text-light">{starship.passengers}</p>
+                                                <small className="text-secondary">Passengers</small>
+                                            </Col>
+                                        )}
+
+                                        {isKnownValue(starship.max_atmosphering_speed) && (
+                                            <Col xs={6} md={3}>
+                                                <p className="mb-0 fw-bold text-light">{starship.max_atmosphering_speed}</p>
+                                                <small className="text-secondary">Max Speed</small>
+                                            </Col>
+                                        )}
+
+                                        {isKnownValue(starship.hyperdrive_rating) && (
+                                            <Col xs={6} md={3}>
+                                                <p className="mb-0 fw-bold text-light">{starship.hyperdrive_rating}</p>
+                                                <small className="text-secondary">Hyperdrive</small>
+                                            </Col>
+                                        )}
+                                    </Row>
+                                )}
+                            </Col>
+                        </Row>
+                    </Container>
+                </section>
+            </div>
+
+            {/* ========== BOTTOM SECTION ========== */}
+            <Container className="mt-5 px-0">
+                <Card className="bg-dark text-light p-4 border-secondary shadow">
+                    {starship.pilots.length > 0 && (
+                        <>
+                            <h4 className="text-light">Known Pilots</h4>
+                            <div className="mb-4">
+                                {starship.pilots.map((pilot) => (
+                                    <Link to={`/people/${pilot.id}`} key={pilot.id} className="text-white text-decoration-none">
+                                        <span className="badge bg-secondary me-2 mb-2" style={{ fontSize: "0.8rem" }}>
+                                            {pilot.name}
+                                        </span>
+                                    </Link>
+                                ))}
+                            </div>
+                        </>
+                    )}
+
+                    {starship.films.length > 0 && (
+                        <>
+                            <h4 className="text-light">Films</h4>
+                            <div className="mb-2">
+                                {starship.films.map((film) => (
+                                    <Link to={`/films/${film.id}`} key={film.id} className="text-white text-decoration-none">
+                                        <span className="badge bg-secondary me-2 mb-2" style={{ fontSize: "0.8rem" }}>
+                                            {film.title}
+                                        </span>
+                                    </Link>
+                                ))}
+                            </div>
+                        </>
+                    )}
+                </Card>
+
+                <button className="pagination-btn my-4" onClick={() => navigate(-1)}>
+                    Back
+                </button>
+            </Container>
+        </>
     );
 };
 
