@@ -154,6 +154,15 @@ img {
    A M B I E N T   G L O W
 =================================== */
 
+.carousel-card {
+  width: 100%;
+  display: block;
+}
+
+.carousel-card p {
+  display: none;
+}
+
 .poster-container {
   position: relative;
   display: block;
@@ -192,9 +201,6 @@ img {
   outline-offset: -2px;
 }
 
-.carousel-card:hover p {
-  text-decoration: underline;
-}
 
 /* ================================ 
    P A G I N A T I O N  D O T S
@@ -262,7 +268,7 @@ img {
 
 .section-carousel-category-title {
   color: #e5e5e5;
-  font-size: 1rem;
+  font-size: 0.85rem;
 }
 
 .section-carousel-explore-all {
@@ -276,7 +282,7 @@ img {
 }
 
 .section-carousel-explore-all h5 {
-  font-size: 0.8rem;
+  font-size: 0.7rem;
 }
 
 
@@ -542,6 +548,17 @@ img {
    L E F T | R I G H T  A R R O W
 =================================== */
 
+@media (max-width: 767px) {
+  .carousel-wrapper .swiper-pagination {
+    display: none;
+  }
+
+  /* Reclaim the empty space left by the hidden dots */
+  .carousel-wrapper .swiper {
+    padding-bottom: 0px !important;
+  }
+}
+
 @media (max-width: 1023px) {
 
   .carousel-wrapper .swiper-button-next,
@@ -549,7 +566,6 @@ img {
     display: none;
   }
 }
-
 
 @media (min-width: 1024px) {
 
@@ -661,9 +677,7 @@ img {
   }
 
   /* ========== HOME REACT-CAROUSEL ========== */
-  .carousel-card {
-    width: 125px;
-  }
+
 
   .carousel-card p {
     display: block;
@@ -709,14 +723,12 @@ img {
     background-color: #fff;
   }
 
-
   .swiper-wrapper {
     transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1) !important;
   }
 
 
   /* ========== ERROR MESSAGE ========== */
-
   .error {
     font-size: 0.8rem;
   }
@@ -726,10 +738,6 @@ img {
 @media (min-width: 768px) {
 
   /* ========== HOME REACT-CAROUSEL ========== */
-  .carousel-card {
-    width: 160px;
-  }
-
   .carousel-card p {
     font-size: 0.8rem;
   }
@@ -796,11 +804,6 @@ img {
 
 @media (min-width: 1024px) {
 
-  /* ========== HOME REACT-CAROUSEL ========== */
-  .carousel-card {
-    width: 170px;
-  }
-
   /* ========== SECTION CAROUSEL CATEGORY TITLE | EXPLORE ALL ========== */
   .section-carousel-category-title {
     font-size: 1.8rem;
@@ -840,12 +843,6 @@ img {
 }
 
 @media (min-width: 1400px) {
-
-  /* ========== HOME REACT-CAROUSEL ========== */
-
-  .carousel-card {
-    width: 200px;
-  }
 
   /* ========== HERO CAROUSEL ========== */
 

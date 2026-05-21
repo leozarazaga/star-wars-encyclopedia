@@ -16,7 +16,8 @@ const CarouselView: React.FC<CarouselViewProps> = ({ children }) => {
             <Swiper
                 modules={[Navigation, Pagination, Keyboard]}
                 spaceBetween={20}
-                slidesPerView={2}
+                // Base Mobile (under 375px): Shows 2 full cards and a 30% peek of the 3rd
+                slidesPerView={2.3}
                 slidesPerGroup={1}
                 speed={800}
                 navigation={true}
@@ -25,11 +26,15 @@ const CarouselView: React.FC<CarouselViewProps> = ({ children }) => {
                 loop={false}
                 grabCursor={true}
                 breakpoints={{
-                    420: { slidesPerView: 3 },
-                    768: { slidesPerView: 4, slidesPerGroup: 2 },
-                    1024: { slidesPerView: 5, slidesPerGroup: 3 },
-                    1200: { slidesPerView: 6, slidesPerGroup: 3 },
-                    1400: { slidesPerView: 6, slidesPerGroup: 4 },
+                    // Mobile
+                    375: { slidesPerView: 4.3, spaceBetween: 10 },
+                    420: { slidesPerView: 4.3, spaceBetween: 10 },
+
+                    //Tablet & Desktop
+                    768: { slidesPerView: 4, slidesPerGroup: 2, spaceBetween: 20 },
+                    1024: { slidesPerView: 5, slidesPerGroup: 3, spaceBetween: 20 },
+                    1200: { slidesPerView: 6, slidesPerGroup: 3, spaceBetween: 20 },
+                    1400: { slidesPerView: 6, slidesPerGroup: 4, spaceBetween: 20 },
                 }}
                 className="main-swiper-container"
             >
