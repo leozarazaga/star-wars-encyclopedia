@@ -49,7 +49,7 @@ const SpeciesCarousel = () => {
     }
 
     return (
-        <Container className="mt-5">
+        <Container className="mt-4">
             <SectionTitle title="Species" linkTo="/species" />
             {!species && isLoading && <LoadingCarouselSpinner />}
 

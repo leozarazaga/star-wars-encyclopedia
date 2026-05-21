@@ -38,7 +38,7 @@ const VehicleCarousel = () => {
     }
 
     return (
-        <Container className="mt-5 mb-5">
+        <Container className="mt-4 mb-4">
             <SectionTitle title="Vehicles" linkTo="/vehicles" />
             {!vehicles && isLoading && <LoadingCarouselSpinner />}
 

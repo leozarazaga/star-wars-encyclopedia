@@ -38,7 +38,7 @@ const StarshipsCarousel = () => {
     }
 
     return (
-        <Container className="mt-5">
+        <Container className="mt-4">
             <SectionTitle title="Starships" linkTo="/starships" />
             {!starships && isLoading && <LoadingCarouselSpinner />}
 

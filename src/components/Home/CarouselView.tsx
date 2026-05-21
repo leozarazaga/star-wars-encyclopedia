@@ -27,8 +27,8 @@ const CarouselView: React.FC<CarouselViewProps> = ({ children }) => {
                 grabCursor={true}
                 breakpoints={{
                     // Mobile
-                    375: { slidesPerView: 4.3, spaceBetween: 10 },
-                    420: { slidesPerView: 4.3, spaceBetween: 10 },
+                    375: { slidesPerView: 3.3, spaceBetween: 10 },
+                    420: { slidesPerView: 3.3, spaceBetween: 10 },
 
                     //Tablet & Desktop
                     768: { slidesPerView: 4, slidesPerGroup: 2, spaceBetween: 20 },
