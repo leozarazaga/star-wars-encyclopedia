@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
-import type { FilmPaginationResult } from "../types/StarWarsAPI.types";
-import { getFilms } from "../services/StarWarsAPI";
 import { Col, Container, Row } from "react-bootstrap";
 import { useSearchParams } from "react-router";
-import Pagination from "../components/Pagination";
 import CardInfo from "../components/CardInfo";
-import SearchForm from "../components/SearchForm";
-import LoadingSpinner from "../components/LoadingSpinner";
 import ErrorMessage from "../components/ErrorMessage";
+import LoadingSpinner from "../components/LoadingSpinner";
+import Pagination from "../components/Pagination";
+import SearchForm from "../components/SearchForm";
+import { getFilms } from "../services/StarWarsAPI";
+import type { FilmPaginationResult } from "../types/StarWarsAPI.types";
 
 const FilmsPage = () => {
     const [error, setError] = useState<string | false>(false);
@@ -63,9 +63,9 @@ const FilmsPage = () => {
 
             {search !== "" &&
                 (movies.data.length === 0 ? (
-                    <p className="fs-5 text-light">No results found for "{search}"</p>
+                    <p className="fs-5 text-light mt-3">No results found for "{search}"</p>
                 ) : (
-                    <p className="fs-5 text-light">Search results for "{search}"</p>
+                    <p className="fs-5 text-light mt-3">Search results for "{search}"</p>
                 ))}
 
             {movies.data.length > 0 && (
@@ -76,9 +76,15 @@ const FilmsPage = () => {
                 </div>
             )}
 
-            <Row className="g-3">
+            {movies.data.length > 0 && (
+                <div className="mt-4 mb-3">
+                    <h6 style={{ color: "#e5e5e5", letterSpacing: "1px", margin: 0 }}>ALL FILMS ({movies.total})</h6>
+                </div>
+            )}
+
+            <Row xs={2} md={3} lg={4} xl={5} className="g-4">
                 {movies.data.map((movie) => (
-                    <Col key={movie.id} xs={6} md={6} lg={3} className="mb-4">
+                    <Col key={movie.id} className="mb-4">
                         <CardInfo title={movie.title} image={movie.image_url} link={`/films/${movie.id}`} />
                     </Col>
                 ))}

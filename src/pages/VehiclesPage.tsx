@@ -78,9 +78,15 @@ const VehiclesPage = () => {
                         </h1>
                     </div>
 
-                    <Row className="g-3">
+                    {vehicles.data.length > 0 && (
+                        <div className="mt-4 mb-3">
+                            <h6 style={{ color: "#e5e5e5", letterSpacing: "1px", margin: 0 }}>ALL VEHICLES ({vehicles.total})</h6>
+                        </div>
+                    )}
+
+                    <Row xs={2} md={3} lg={4} xl={5} className="g-4">
                         {vehicles.data.map((vehicle) => (
-                            <Col key={vehicle.id} xs={6} md={6} lg={3} className="mb-4">
+                            <Col key={vehicle.id} className="mb-4">
                                 <CardInfo title={vehicle.name} image={vehicleImages[vehicle.id]} link={`/vehicles/${vehicle.id}`} />
                             </Col>
                         ))}

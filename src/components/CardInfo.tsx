@@ -1,4 +1,4 @@
-import { Card } from "react-bootstrap";
+import React from "react";
 import { Link } from "react-router";
 
 interface CardInfoProps {
@@ -9,16 +9,14 @@ interface CardInfoProps {
 
 const CardInfo: React.FC<CardInfoProps> = ({ title, image, link }) => {
     return (
-        <Card>
-            <Link to={link}>
-                <Card.Img variant="top" src={image} alt={title} className="card-img-dimension" />
-            </Link>
-            <Card.Body className="card-info-body">
-                <Link to={link} className="card-title-link">
-                    <Card.Title className="card-title-text">{title}</Card.Title>
-                </Link>
-            </Card.Body>
-        </Card>
+        <Link to={link} className="text-decoration-none sw-card">
+            <div className="sw-poster-wrapper">
+                <img src={image} alt={title} className="sw-poster" />
+            </div>
+            <div className="sw-info mt-3">
+                <h6 className="text-light fw-bold sw-title">{title}</h6>
+            </div>
+        </Link>
     );
 };
 

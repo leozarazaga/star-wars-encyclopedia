@@ -15,12 +15,12 @@ const CarouselView: React.FC<CarouselViewProps> = ({ children }) => {
         <div className="carousel-wrapper">
             <Swiper
                 modules={[Navigation, Pagination, Keyboard]}
-                spaceBetween={20} 
+                spaceBetween={20}
                 slidesPerView={2}
                 slidesPerGroup={1}
                 speed={800}
                 navigation={true}
-                pagination={{ clickable: true}}
+                pagination={{ clickable: true }}
                 keyboard={{ enabled: true }}
                 loop={false}
                 grabCursor={true}

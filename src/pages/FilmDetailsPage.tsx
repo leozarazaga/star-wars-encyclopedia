@@ -71,30 +71,26 @@ const FilmDetailsPage = () => {
 
                             {/* RIGHT COLUMN */}
                             <Col xs={12} md={8} lg={9} xl={8} className="text-light px-md-4 px-lg-5">
-                                {/* Title & Year */}
                                 <h2 className="fw-bold mb-1 text-white">
                                     {movie.title} <span className="fw-light text-secondary">({movie.release_date.substring(0, 4)})</span>
                                 </h2>
 
-                                {/* Metadata Row (Episode & Date) */}
-                                <div className="text-light mb-3 d-flex flex-wrap align-items-center gap-2" style={{ fontSize: "0.95rem" }}>
+                                <div className="text-light mb-3 d-flex flex-wrap align-items-center gap-2" style={{ fontSize: "0.9rem" }}>
                                     <span className="border border-secondary text-secondary px-2 rounded-1">EPISODE {movie.episode_id}</span>
                                     <span>•</span>
                                     <span className="text-secondary">{movie.release_date}</span>
                                 </div>
 
-                                <p className="fst-italic text-secondary mb-3 fs-5">A long time ago in a galaxy far, far away...</p>
+                                <p className="fst-italic text-secondary mb-3 fs-6">A long time ago in a galaxy far, far away...</p>
 
-                                {/* Overview & Short Description */}
                                 <h5 className="text-light fw-bold mt-4">Overview</h5>
                                 <p className="text-light lh-lg mb-4" style={{ fontSize: "0.8rem" }}>
                                     {movie.short_description}
                                 </p>
 
-                                {/* Crew Grid */}
                                 <Row className="mt-4 pt-3 border-top border-secondary">
                                     <Col xs={6} md={4}>
-                                        <p className="mb-0 fw-bold text-light">{movie.director}</p>
+                                        <p className="mb-0 fw-bold text-light ">{movie.director}</p>
                                         <small className="text-secondary">Director</small>
                                     </Col>
                                     <Col xs={6} md={8}>
@@ -109,7 +105,7 @@ const FilmDetailsPage = () => {
             </div>
 
             {/* ========== BOTTOM SECTION ========== */}
-            <Container className="mt-5">
+            <Container className="mt-5 px-0">
                 <Card className="bg-dark text-light p-4 border-secondary shadow">
                     <h4 className="text-light">Characters</h4>
                     <div className="mb-4">

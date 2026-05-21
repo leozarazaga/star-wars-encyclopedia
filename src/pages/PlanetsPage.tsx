@@ -78,9 +78,15 @@ const PlanetsPage = () => {
                         </h1>
                     </div>
 
-                    <Row className="g-3">
+                    {planets.data.length > 0 && (
+                        <div className="mt-4 mb-3">
+                            <h6 style={{ color: "#e5e5e5", letterSpacing: "1px", margin: 0 }}>ALL PLANETS ({planets.total})</h6>
+                        </div>
+                    )}
+
+                    <Row xs={2} md={3} lg={4} xl={5} className="g-4">
                         {planets.data.map((planet) => (
-                            <Col key={planet.id} xs={6} md={6} lg={3} className="mb-4">
+                            <Col key={planet.id} className="mb-4">
                                 <CardInfo title={planet.name} image={planetsImages[planet.id]} link={`/planets/${planet.id}`} />
                             </Col>
                         ))}

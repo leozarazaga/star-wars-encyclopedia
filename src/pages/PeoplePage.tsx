@@ -76,9 +76,15 @@ const PeoplePage = () => {
                 </div>
             )}
 
-            <Row className="g-3">
+            {peoples.data.length > 0 && (
+                <div className="mt-4 mb-3">
+                    <h6 style={{ color: "#e5e5e5", letterSpacing: "1px", margin: 0 }}>ALL CHARACTERS ({peoples.total})</h6>
+                </div>
+            )}
+
+            <Row xs={2} md={3} lg={4} xl={5} className="g-4">
                 {peoples.data.map((people) => (
-                    <Col key={people.id} xs={6} md={6} lg={3} className="mb-4">
+                    <Col key={people.id} className="mb-4">
                         <CardInfo title={people.name} image={people.image_url} link={`/people/${people.id}`} />
                     </Col>
                 ))}

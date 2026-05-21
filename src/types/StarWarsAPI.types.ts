@@ -122,6 +122,7 @@ export interface Planet {
     population: string;
     residents_count: number;
     films_count: number;
+    image_url: string;
     residents: Residents[];
     films: Films[];
 }
@@ -235,7 +236,6 @@ export interface Vehicle {
     films_count: number;
     pilots: Pilot[];
     films: Films[];
-
 }
 
 export interface VehiclePaginationResult {

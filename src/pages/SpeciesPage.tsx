@@ -78,9 +78,15 @@ const SpeciesPage = () => {
                         </h1>
                     </div>
 
-                    <Row className="g-3">
+                    {species.data.length > 0 && (
+                        <div className="mt-4 mb-3">
+                            <h6 style={{ color: "#e5e5e5", letterSpacing: "1px", margin: 0 }}>ALL SPECIES ({species.total})</h6>
+                        </div>
+                    )}
+
+                    <Row xs={2} md={3} lg={4} xl={5} className="g-4">
                         {species.data.map((species) => (
-                            <Col key={species.id} xs={6} md={6} lg={3} className="mb-4">
+                            <Col key={species.id} className="mb-4">
                                 <CardInfo title={species.name} image={speciesImages[species.id]} link={`/species/${species.id}`} />
                             </Col>
                         ))}
