@@ -1,29 +1,20 @@
-export interface Character {
+// ==================================
+//         REFERENCE TYPES
+// ==================================
+
+interface NamedReference {
     id: number;
     name: string;
 }
 
-export interface Planet {
+interface TitledReference {
     id: number;
-    name: string;
+    title: string;
 }
 
-export interface Starship {
-    id: number;
-    name: string;
-}
-
-export interface Vehicle {
-    id: number;
-    name: string;
-}
-
-interface Homeworld {
-    id: number;
-    name: string;
-}
-
-///////////////////////////////////////////////////
+// ==================================
+//          MAIN DATA TYPES
+// ==================================
 
 export interface Film {
     id: number;
@@ -37,28 +28,13 @@ export interface Film {
     created: string;
     edited: string;
     short_description: string;
-    characters: Character[];
-    planets: Planet[];
-    starships: Starship[];
-    vehicles: Vehicle[];
-    species: Specie[];
+
+    characters: NamedReference[];
+    planets: NamedReference[];
+    starships: NamedReference[];
+    vehicles: NamedReference[];
+    species: NamedReference[];
 }
-
-export interface FilmPaginationResult {
-    current_page: number;
-    data: Film[];
-
-    first_page_url: string;
-    from: number;
-    last_page: number;
-    last_page_url: string | null;
-    next_page_url: string | null;
-    per_page: number;
-    prev_page_url: string | null;
-    total: number;
-}
-
-///////////////////////////////////////////////////
 
 export interface People {
     id: number;
@@ -78,38 +54,13 @@ export interface People {
     vehicles_count: number;
     short_description: string;
     force_alignment: string;
-    lightsaber_color: string;
-    films: Film[];
-    species: Specie[];
-    starships: Starship[];
-    vehicles: Vehicle[];
-    homeworld: Homeworld;
-}
+    lightsaber_color: string | null;
 
-export interface PeoplePaginationResult {
-    current_page: number;
-    data: People[];
-
-    first_page_url: string;
-    from: number;
-    last_page: number;
-    last_page_url: string | null;
-    next_page_url: string | null;
-    per_page: number;
-    prev_page_url: string | null;
-    total: number;
-}
-
-///////////////////////////////////////////////////
-
-interface Residents {
-    id: number;
-    name: string;
-}
-
-interface Films {
-    id: number;
-    title: string;
+    films: TitledReference[];
+    species: NamedReference[];
+    starships: NamedReference[];
+    vehicles: NamedReference[];
+    homeworld: NamedReference;
 }
 
 export interface Planet {
@@ -127,27 +78,12 @@ export interface Planet {
     films_count: number;
     image_url: string;
     short_description: string;
-    residents: Residents[];
-    films: Films[];
+
+    residents: NamedReference[];
+    films: TitledReference[];
 }
 
-export interface PlanetsPaginationResult {
-    current_page: number;
-    data: Planet[];
-
-    first_page_url: string;
-    from: number;
-    last_page: number;
-    last_page_url: string | null;
-    next_page_url: string | null;
-    per_page: number;
-    prev_page_url: string | null;
-    total: number;
-}
-
-///////////////////////////////////////////////////
-
-export interface Specie {
+export interface Species {
     id: number;
     name: string;
     classification: string;
@@ -161,30 +97,10 @@ export interface Specie {
     people_count: number;
     films_count: number;
     short_description: string;
-    people: People[];
-    homeworld: Homeworld;
-    films: Films[];
-}
 
-export interface SpeciesPaginationResult {
-    current_page: number;
-    data: Specie[];
-
-    first_page_url: string;
-    from: number;
-    last_page: number;
-    last_page_url: string | null;
-    next_page_url: string | null;
-    per_page: number;
-    prev_page_url: string | null;
-    total: number;
-}
-
-///////////////////////////////////////////////////
-
-interface Pilot {
-    id: number;
-    name: string;
+    people: NamedReference[];
+    homeworld: NamedReference | null;
+    films: TitledReference[];
 }
 
 export interface Starship {
@@ -205,25 +121,10 @@ export interface Starship {
     pilots_count: number;
     films_count: number;
     short_description: string;
-    pilots: Pilot[];
-    films: Films[];
+
+    pilots: NamedReference[];
+    films: TitledReference[];
 }
-
-export interface StarshipPaginationResult {
-    current_page: number;
-    data: Starship[];
-
-    first_page_url: string;
-    from: number;
-    last_page: number;
-    last_page_url: string | null;
-    next_page_url: string | null;
-    per_page: number;
-    prev_page_url: string | null;
-    total: number;
-}
-
-///////////////////////////////////////////////////
 
 export interface Vehicle {
     id: number;
@@ -241,14 +142,18 @@ export interface Vehicle {
     pilots_count: number;
     films_count: number;
     short_description: string;
-    pilots: Pilot[];
-    films: Films[];
+
+    pilots: NamedReference[];
+    films: TitledReference[];
 }
 
-export interface VehiclePaginationResult {
-    current_page: number;
-    data: Vehicle[];
+// ==================================
+//        GENERIC PAGINATION
+// ==================================
 
+export interface PaginationResult<T> {
+    current_page: number;
+    data: T[];
     first_page_url: string;
     from: number;
     last_page: number;
@@ -258,3 +163,19 @@ export interface VehiclePaginationResult {
     prev_page_url: string | null;
     total: number;
 }
+
+// ==================================
+//      PAGINATION TYPE ALIASES
+// ==================================
+
+export type FilmPaginationResult = PaginationResult<Film>;
+
+export type PeoplePaginationResult = PaginationResult<People>;
+
+export type PlanetPaginationResult = PaginationResult<Planet>;
+
+export type SpeciesPaginationResult = PaginationResult<Species>;
+
+export type StarshipPaginationResult = PaginationResult<Starship>;
+
+export type VehiclePaginationResult = PaginationResult<Vehicle>;

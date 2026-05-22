@@ -155,10 +155,6 @@ const PlanetsDetailsPage = () => {
                         </>
                     )}
 
-                    {/* Edge Case: Show message if no relationships exist */}
-                    {planet.residents.length === 0 && planet.films.length === 0 && (
-                        <p className="text-secondary mb-0">No recorded films or notable residents found in the archives for this planet.</p>
-                    )}
                 </Card>
 
                 <button className="pagination-btn my-4" onClick={() => navigate(-1)}>

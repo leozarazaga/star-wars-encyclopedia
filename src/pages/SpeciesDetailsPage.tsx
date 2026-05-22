@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { getSpecieById } from "../services/StarWarsAPI";
 import { Card, Col, Container, Row } from "react-bootstrap";
 import { Link, useNavigate, useParams } from "react-router";
-import type { Specie } from "../types/StarWarsAPI.types";
+import type { Species } from "../types/StarWarsAPI.types";
 import { speciesImages } from "../data/speciesImages";
 import LoadingSpinner from "../components/LoadingSpinner";
 import ErrorMessage from "../components/ErrorMessage";
@@ -10,7 +10,7 @@ import ErrorMessage from "../components/ErrorMessage";
 const SpeciesDetailsPage = () => {
     const [error, setError] = useState<string | false>(false);
     const [isLoading, setIsLoading] = useState(false);
-    const [species, setSpecies] = useState<Specie | null>(null);
+    const [species, setSpecies] = useState<Species | null>(null);
     const navigate = useNavigate();
 
     const { id } = useParams();

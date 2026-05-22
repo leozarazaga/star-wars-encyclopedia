@@ -1,19 +1,19 @@
 import { useEffect, useState } from "react";
-import type { PlanetsPaginationResult } from "../types/StarWarsAPI.types";
 import { Col, Container, Row } from "react-bootstrap";
 import { useSearchParams } from "react-router";
-import { getPlanets } from "../services/StarWarsAPI";
-import Pagination from "../components/Pagination";
-import { planetsImages } from "../data/planetsImages";
-import SearchForm from "../components/SearchForm";
 import CardInfo from "../components/CardInfo";
-import LoadingSpinner from "../components/LoadingSpinner";
 import ErrorMessage from "../components/ErrorMessage";
+import LoadingSpinner from "../components/LoadingSpinner";
+import Pagination from "../components/Pagination";
+import SearchForm from "../components/SearchForm";
+import { planetsImages } from "../data/planetsImages";
+import { getPlanets } from "../services/StarWarsAPI";
+import type { PlanetPaginationResult } from "../types/StarWarsAPI.types";
 
 const PlanetsPage = () => {
     const [error, setError] = useState<string | false>(false);
     const [isLoading, setIsLoading] = useState(false);
-    const [planets, setPlanets] = useState<PlanetsPaginationResult | null>(null);
+    const [planets, setPlanets] = useState<PlanetPaginationResult | null>(null);
 
     const [searchParams, setSearchParams] = useSearchParams();
     const search = searchParams.get("search") || "";

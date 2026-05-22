@@ -16,8 +16,8 @@ import type {
     People,
     PeoplePaginationResult,
     Planet,
-    PlanetsPaginationResult,
-    Specie,
+    PlanetPaginationResult,
+    Species,
     SpeciesPaginationResult,
     Starship,
     StarshipPaginationResult,
@@ -60,7 +60,7 @@ export const getPeoplebyId = async (id: number) => {
 ///////////////////////////////////////////////////////
 
 export const getPlanets = async (search: string, page = 1) => {
-    return await get<PlanetsPaginationResult>(`/planets?search=${search}&page=${page}`);
+    return await get<PlanetPaginationResult>(`/planets?search=${search}&page=${page}`);
 };
 
 export const getPlanetbyId = async (id: number) => {
@@ -74,7 +74,7 @@ export const getSpecies = async (search: string, page = 1) => {
 };
 
 export const getSpecieById = async (id: number) => {
-    return await get<Specie>(`/species/${id}`);
+    return await get<Species>(`/species/${id}`);
 };
 
 ///////////////////////////////////////////////////////
