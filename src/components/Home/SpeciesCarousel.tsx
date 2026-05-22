@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import type { Specie } from "../../types/StarWarsAPI.types";
+import type { Species } from "../../types/StarWarsAPI.types";
 import { getSpecies } from "../../services/StarWarsAPI";
 import { Container } from "react-bootstrap";
 import CarouselView from "./CarouselView";
@@ -12,7 +12,7 @@ import ErrorMessage from "../ErrorMessage";
 const SpeciesCarousel = () => {
     const [error, setError] = useState<string | false>(false);
     const [isLoading, setIsLoading] = useState(false);
-    const [species, setSpecies] = useState<Specie[] | null>(null);
+    const [species, setSpecies] = useState<Species[] | null>(null);
 
     const getStarWarsSpecies = async () => {
         setError(false);
@@ -21,7 +21,7 @@ const SpeciesCarousel = () => {
 
         try {
             const maxPeopleToShow = 15;
-            const allPeople: Specie[] = [];
+            const allPeople: Species[] = [];
 
             for (let i = 1; allPeople.length < maxPeopleToShow; i++) {
                 const res = await getSpecies("", i);
