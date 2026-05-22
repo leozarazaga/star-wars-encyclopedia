@@ -40,6 +40,7 @@ img {
 =================================== */
 
 .nav-item-custom {
+  position: relative;
   font-family: "StarJedi", sans-serif;
   letter-spacing: 1.7px;
   color: #B5B7B7;
@@ -47,14 +48,29 @@ img {
   font-size: 1.07rem;
   padding: 0.5rem 1rem;
   transition: color 0.3s ease;
+  display: inline-block;
 }
 
-.nav-item-custom:hover {
+.nav-item-custom::after {
+  content: "";
+  position: absolute;
+  bottom: 0px;
+  left: 10%;
+  width: 80%;
+  height: 2px;
+  background-color: transparent;
+  border-radius: 2px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.nav-item-custom:hover,
+.nav-item-custom.active {
   color: #f8f8f8;
 }
 
-.nav-item-custom.active {
-  color: #B5B7B7;
+.nav-item-custom.active::after {
+  background-color: #fff;
+  box-shadow: 0px 0px 4px 1px #fadd4bd1;
 }
 
 /*======== HAMBUGER MENU ========*/

@@ -33,8 +33,8 @@ const CarouselView: React.FC<CarouselViewProps> = ({ children }) => {
                     //Tablet & Desktop
                     768: { slidesPerView: 4, slidesPerGroup: 3, spaceBetween: 20 },
                     1024: { slidesPerView: 5, slidesPerGroup: 3, spaceBetween: 20 },
-                    1200: { slidesPerView: 6, slidesPerGroup: 3, spaceBetween: 20 },
-                    1400: { slidesPerView: 6, slidesPerGroup: 4, spaceBetween: 20 },
+                    1200: { slidesPerView: 6, slidesPerGroup: 5, spaceBetween: 20 },
+                    1400: { slidesPerView: 6, slidesPerGroup: 5, spaceBetween: 20 },
                 }}
                 className="main-swiper-container"
             >
